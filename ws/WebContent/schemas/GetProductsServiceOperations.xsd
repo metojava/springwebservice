@@ -18,4 +18,16 @@
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
+	<xsd:element name="GetAllProductsRequest">
+		<xsd:complexType>
+			<xsd:sequence />
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="GetAllProductsResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="product:Products" maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
 </xsd:schema>

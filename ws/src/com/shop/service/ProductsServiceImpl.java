@@ -1,5 +1,7 @@
 package com.shop.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,7 +9,7 @@ import com.shop.dao.ProductsDao;
 import com.shop.my.Products;
 
 @Service
-public class ProductsServiceImpl implements ProductsService{
+public class ProductsServiceImpl implements ProductsService {
 
 	@Autowired
 	ProductsDao productsDao;
@@ -22,6 +24,11 @@ public class ProductsServiceImpl implements ProductsService{
 		Products prod = productsDao.getProduct(id);
 		return prod;
 	}
-	
-	
+
+	@Override
+	public List<Products> getProducts() {
+		List<Products> products = productsDao.getProducts();
+		return products;
+	}
+
 }

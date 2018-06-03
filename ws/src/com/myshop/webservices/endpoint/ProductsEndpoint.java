@@ -6,6 +6,8 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import com.myshop.webservices.getproductsservices.GetAllProductsRequest;
+import com.myshop.webservices.getproductsservices.GetAllProductsResponse;
 import com.myshop.webservices.getproductsservices.GetProductsRequest;
 import com.myshop.webservices.getproductsservices.GetProductsResponse;
 import com.shop.service.ProductsService;
@@ -23,14 +25,25 @@ public class ProductsEndpoint {
 	}
 
 	@PayloadRoot(localPart = "GetProductsRequest", namespace = GET_TARGET_NAMESPACE)
-	public @ResponsePayload
-	GetProductsResponse getProductsDetails(
-			@RequestPayload GetProductsRequest request) {
+	public @ResponsePayload GetProductsResponse getProductsDetails(@RequestPayload GetProductsRequest request) {
 		System.out.println("Get User !");
 		GetProductsResponse response = new GetProductsResponse();
 		try {
-			response.setProductsDetails(productsService.getProduct(request
-					.getPid()));
+			response.setProductsDetails(productsService.getProduct(request.getPid()));
+		} catch (Exception ex) {
+
+			ex.printStackTrace();
+		}
+		return response;
+	}
+
+	@PayloadRoot(localPart = "GetAllProductsRequest", namespace = GET_TARGET_NAMESPACE)
+	public @ResponsePayload GetAllProductsResponse getAllProductsDetails(
+			@RequestPayload GetAllProductsRequest request) {
+		System.out.println("Get User !");
+		GetAllProductsResponse response = new GetAllProductsResponse();
+		try {
+			response.getProducts().addAll(productsService.getProducts());
 		} catch (Exception ex) {
 
 			ex.printStackTrace();

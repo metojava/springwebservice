@@ -39,7 +39,7 @@
 	</bean>
 
 	<sws:dynamic-wsdl id="Products" portTypeName="Products"
-		locationUri="http://localhost:8083/ws/endpoints/">
+		locationUri="http://localhost:8080/ws/endpoints/">
 		<sws:xsd location="schemas/GetProductsServiceOperations.xsd" />
 	</sws:dynamic-wsdl>
 
